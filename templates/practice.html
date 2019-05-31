@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Testing
+{% endblock %}
+
+{% block main %}
+<div class=".mx-auto" id="bigdiv">
+<div class =".mx-auto cont" id="exSelCont" >
+  <div class= "form-group row" id="ex_selector">
+    <div class="col-4 border" id="filtercol">
+        <ul>
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Filter<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">One
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">Two
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+    </div>
+    <div class="col-6 border" id="exnamecol" style="display:flex;flex-direction:row">
+      <select id="exerciseselect" style="flex:1">
+        <option value="" disabled selected>Select an exercise</option>
+        <option value="new_ex">add new exercise</option>
+      </select>
+    </div>
+    <div class="col-2 border buttoncont">
+      <button id="enterexercise">ADD</button>
+      <button id="newexercise" style='display:none;'>NEW</button>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='easytimer/dist/easytimer.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='test.js') }}"></script>
+
+
+
+{% endblock %}
+

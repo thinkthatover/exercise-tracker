@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+<div class="alert alert-danger" id="username-alert" role="alert" style="display:none;">Username Unavailable</div>
+<div class="alert alert-danger" id="userlength-alert" role="alert" style="display:none;">Username must be at least 1 char long</div>
+<div class="alert alert-danger" id="passlength-alert" role="alert" style="display:none;">Password must be at least 1 char long</div>
+<div class="alert alert-danger" id="passconfirm-alert" role="alert" style="display:none;">passwords do not match</div>
+
+<form action="/register" method="post" class="needs-validation" id="myform" novalidate>
+
+
+    <div class="form-group">
+        <input autofocus class="form-control" id="firstname" name="firstname" placeholder="First Name" type="text" required>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" id="lastname" name="lastname" placeholder="Last Name" type="text" required>
+    </div>
+
+
+    <div class="form-group">
+        <label>D.O.B.</label>
+      <input type="date" class="form-control"id="DOB1" name="DOB1"  placeholder="Date of Birth" required>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" id="username" name="username" placeholder="Enter Unique Username" type="text" required>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" id="regpassword"name="password" placeholder="Password" type="password" required>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" id="regconfirm" name="confirmation" placeholder="Confirm Password" type="password" required>
+    </div>
+    <div class="form-group">
+
+    <div class="custom-control custom-checkbox">
+  <input type="checkbox"  class="custom-control-input" id="customCheck1" name="trainercheck">
+  <label class="custom-control-label" for="customCheck1">I am a trainer</label>
+</div>
+
+    <button class="btn btn-primary" id="btnsubmit" type="submit">Create Account</button>
+</form>
+
+<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+
+{% endblock %}
+

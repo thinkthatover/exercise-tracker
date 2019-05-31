@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Workout
+{% endblock %}
+
+{% block main %}
+
+<div class=".mx-auto" id="bigdiv">
+  <div class="row border rounded" id="startbar">
+    <div class="col border justify-content-start" id="selectdiv">
+        <select id="workoutselect" class="selectpicker">
+          <option>Select workout</option >
+
+          {% for index in workouts%}
+              <option value="{{index[0]}}">{{index[1]}} </option>
+          {%endfor%}
+        </select>
+    </div>
+
+    <div class="col border justify-content-end" id="startdiv">
+        <button type="button" id="startbutton" onclick="startWorkout()">Start</button>
+    </div>
+
+    <div class="col border" id="pausediv" style="display: none;">
+        <button type="button" id="pausebutton">Pause</button>
+    </div>
+
+    </div>
+<br>
+<div id= "currentexercise" style="display: none;">
+  <div class="row border rounded" >
+    <div class="col border" id="ex_name">
+      Exercise Name
+    </div>
+    <div class="col border" id="ex_time">
+      0:00
+    </div>
+  </div>
+  <div class="row border rounded">
+    <div class="col border justify-content-start" id='ex_weightselect'>
+        <select id="cweight" class="selectpicker">
+        </select>
+    </div>
+    <div class="col border" id='ex_set'>
+         Set x/y
+    </div>
+    <div class="col border" id='ex_repselect'>
+        <select id="creps" class="selectpicker">
+        </select>
+    </div>
+
+    <button type="button" class="col border"id="submitset">Submit</button>
+  </div>
+  <div class="row border rounded" id="desc_container" style="display:none;">
+    <div class="col border" id='ex_description'>
+      Description
+    </div>
+  </div>
+  <br>
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='easytimer/dist/easytimer.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='ind.js') }}"></script>
+
+
+
+{% endblock %}
+

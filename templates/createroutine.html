@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Exercise
+{% endblock %}
+
+{% block main %}
+
+<div class=".mx-auto" id="bigdiv">
+
+
+<!--TOP GUI Container --->
+  <div class="row border rounded" id="WOSelCont">
+    <div class="col border justify-content-start" id="selectdiv">
+        <label id="workoutlabel" style="display:none"></label>
+        <input type:"text" id="createtextbox" placeholder="Workout Name Here" maxlength="18" style="display: none;"></input>
+        <select id="workoutselect" class="selectpicker">
+          <option value="New Workout">New Workout</option>
+          {% for index in workouts%}
+              <option value="{{index[0]}}">{{index[1]}} </option>
+          {%endfor%}
+        </select>
+    </div>
+    <div class="col border justify-content-end" id="startdiv">
+        <button type="button" id="createworkoutbutton">Create Workout</button>
+        <button type="button" id="savenewworkoutbutton" style="display: none;">save new</button>
+    </div>
+    <div class="col border justify-content-end" id="editdiv" style="display: none;">
+      <button id="editworkoutbutton">edit </button>
+      <button id="deleteworkoutbutton">delete</button>
+      <button id="saveasworkoutbutton" style="display: none;">SAVE AS</button>
+      <button id="saveworkoutbutton" style="display: none;">save</button>
+      <button id="cancelworkoutbutton" style="display: none;">cancel</button>
+    </div>
+    </div>
+    <br>
+
+<!--Select Exercise Container --->
+<div class =".mx-auto cont" id="exSelCont" >
+  <div class= "row border rounded" id="ex_selector" style="display: none;">
+    <div class="col-4 border" id="filtercol">
+      <select id="groupselect"  style="flex:1">
+        <option value="" disabled selected>Filter</option>
+        {% for group in muscle_groups%}
+          <option value="{{group[0]}}">{{group[1]}}</option>
+        {%endfor%}
+      </select>
+    </div>
+    <div class="col-6 border" id="exnamecol" style="display:flex;flex-direction:row">
+      <select id="exerciseselect" style="flex:1">
+        <option value="" disabled selected>Select an exercise</option>
+        <option value="new_ex">add new exercise</option>
+      </select>
+      <input class="form-control" min="3" type="text"  style:"flex:1" id="newExInput" maxlength="25" placeholder="Enter Exercise Name">
+    </div>
+    <div class="col-2 border buttoncont">
+      <button id="enterexercise" disabled>ADD</button>
+      <button id="newexercise" style='display:none;'>NEW</button>
+      <button id="saveexercise" style='display:none;'>SAVE</button>
+    </div>
+  </div>
+</div>
+  <br>
+
+
+<!--Exercise Edit Container --->
+<div class=".mx-auto cont" id="exEditCont" style="display:none;">
+  <div id="div_id" style="display:none;"></div>
+  <div id="ex_id" style="display:none;"></div>
+  <div class= "row">
+    <div class="col-6 border" id="namecol">
+      Exercise Name
+    </div>
+    <div class="col-6 border" id="ordercol">
+      <span>Order: </span>
+      <select id="orderselect">
+      </select>
+      <span> / </span>
+      <span id="ordernum">12</span>
+    </div>
+  </div>
+  <div class= "row">
+  <div class="col-4 border">
+      <select id="setselect">
+        <option value="" disabled selected>N/A</option>
+        {% for x in range(1,10)%}
+          <option value="{{x}}">{{x}}</option>
+        {%endfor%}
+      </select>
+      <span>Sets</span>
+  </div>  <div class="col-4 border">
+      <input type="number" class="col-8" id="repInput" maxlength="3" placeholder="0"> rep
+  </div>
+
+    <div class="col-4 border">
+      <input type="number" class="col-8" id="weightInput" maxlength="3" placeholder="0">
+      <span>lbs </span>
+    </div>
+
+</div>
+  <div class= "row">
+     <div class="col-3 border desc" id="desc">
+      Click for Desc
+    </div>
+    <div class="col-9 border" id="weightcol">
+      Rest Interval
+      <select id="intMin">
+        {% for m in range(0,6)%}
+          {%if m == 0 %}
+            <option selected="selected" val="{{m}}">{{m}}</option>
+          {% else %}
+          <option val="{{m}}">{{m}}</option>
+          {%endif%}
+        {%endfor%}
+      </select>
+      m
+      :
+      <select id="intTenSec">
+        {% for t in range(0,6)%}
+          {%if t == 0 %}
+            <option selected="selected" val="{{t}}">{{t}}</option>
+          {% else %}
+          <option val="{{t}}">{{t}}</option>
+          {%endif%}
+        {%endfor%}
+      </select>
+      <select id="intSec">
+          <option selected="selected" val="0">0</option>
+          <option val="5">5</option>
+      </select>
+      <span>s</span>
+    </div>
+  </div>
+  <div class="row border" id="exEditDesc" style="display: none;">
+    <textarea class="form-control" id="fullDesc" name="fullDesc" aria-label="With textarea" rows="2"></textarea>
+  </div>
+<br>
+
+  <button id="addEx2Workout">ADD</button>
+  <button class=".btn-danger" style='display: none;' id="removeEx2Workout">Delete</button>
+  <button id="cancelEx2Workout">CANCEL</button>
+
+</div>
+<br>
+
+
+<!--Workout Exercises Container -->
+<div class=".mx-auto" id="allExCont">
+</div>
+<div class=".mx-auto container" id="botButCont">
+  <button type="button" class="btn btn-outline-success btn-block" style="display:none;" id="addexercise"><img src="static/open-iconic/svg/plus.svg"></button>
+
+</div>
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='create.js') }}"></script>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,335 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+.icon {
+    width:16px;
+}
+.icon plus {
+    width:20px;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+fill_select {
+    flex: 2;
+}
+
+.row
+{
+    border: 1;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+
+.dropdown-check-list {
+  display: inline-block;
+}
+.dropdown-check-list .anchor {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 50px 5px 10px;
+  border: 1px solid #ccc;
+}
+.dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  padding: 5px;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+.dropdown-check-list .anchor:active:after {
+  right: 8px;
+  top: 21%;
+}
+.dropdown-check-list ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.dropdown-check-list ul.items li {
+  list-style: none;
+}
+
+.desc {<body data-gr-c-s-loaded="true">
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"><span class="red">Exercise</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/stats">User Stats</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/createroutine">Create</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+
+            </div>
+        </nav>
+
+
+
+        <main class="container-fluid">
+
+
+<div class=".mx-auto" id="bigdiv">
+
+
+<!--TOP GUI Container --->
+  <div class="row border rounded" id="editbar">
+    <div class="col border justify-content-start" id="selectdiv">
+        <label id="workoutlabel" style:"display:none"=""></label>
+        <select id="workoutselect" class="selectpicker">
+          <option value="New Workout">New Workout</option>
+
+              <option value="1">legs </option>
+
+              <option value="2">back </option>
+
+        </select>
+    </div>
+    <div class="col border justify-content-end" id="startdiv">
+        <button type="button" id="createworkoutbutton">Create Workout</button>
+    </div>
+    <div class="col border justify-content-end" id="deletediv" style="display: none;">
+      <button id="editworkoutbutton">edit </button>
+      <button id="deleteworkoutbutton">delete</button>
+      <button id="saveworkoutbutton" style="display: none;">save</button>
+      <button id="cancelworkoutbutton" style="display: none;">cancel</button>
+    </div>
+    </div>
+    <br>
+
+<!--Select Exercise Container --->
+<div class=".mx-auto cont" id="exSelCont">
+  <div class="row border rounded" id="ex_selector" style="display: none;">
+    <div class="col-4 border" id="filtercol">
+      <select id="groupselect" style="flex:1">
+        <option value="" disabled="" selected="">Filter</option>
+
+          <option value="1">CARDIO</option>
+
+          <option value="2">CORE</option>
+
+          <option value="3">ABS</option>
+
+          <option value="4">CHEST</option>
+
+          <option value="5">BACK</option>
+
+          <option value="6">LEGS</option>
+
+          <option value="7">ARMS</option>
+
+          <option value="8">MISC</option>
+
+      </select>
+    </div>
+    <div class="col-6 border" id="exnamecol" style="display:flex;flex-direction:row">
+      <select id="exerciseselect" style="flex:1">
+        <option value="" disabled="" selected="">Select an exercise</option>
+        <option value="new_ex">add new exercise</option>
+      </select>
+    </div>
+    <div class="col-2 border buttoncont">
+      <button id="enterexercise">ADD</button>
+      <button id="newexercise" style="display:none;">NEW</button>
+    </div>
+  </div>
+</div>
+  <br>
+
+
+<!--Exercise Edit Container --->
+<div class=".mx-auto cont" id="exEditCont">
+  <div id="ex_id" style="display:none;"></div>
+  <div class="row">
+    <div class="col-6 border" id="namecol">
+      Exercise Name
+    </div>
+    <div class="col-6 border" id="ordercol">
+      <span>Order: </span>
+      <select id="orderselect">
+      </select>
+      <span> / </span>
+      <span id="ordernum">12</span>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-4 border">
+      <select id="setselect">
+        <option value="" disabled="" selected="">N/A</option>
+
+          <option value="1">1</option>
+
+          <option value="2">2</option>
+
+          <option value="3">3</option>
+
+          <option value="4">4</option>
+
+          <option value="5">5</option>
+
+          <option value="6">6</option>
+
+          <option value="7">7</option>
+
+          <option value="8">8</option>
+
+          <option value="9">9</option>
+
+      </select>
+      <span>Sets</span>
+  </div>
+  <div class="col-4 border">
+      <input type="number" class="col-6" id="weightInput" maxlength="3" placeholder="0">
+    Reps
+  </div>
+
+
+    <div class="col-4 border" id="weightcol">
+      <input type="number" class="col-6" id="weightInput" maxlength="3" placeholder="0">
+      <span>lbs </span>
+    </div>
+
+</div>
+  <div class="row">
+     <div class="col-3 border desc" id="desc">
+      watch me whip watch me nay nay watch me wip wip watch me nayaya
+  </div>
+    <div class="col-9 border" id="weightcol">
+      Rest Interval
+      <select id="intMin">
+
+          <option val="0">0</option>
+
+          <option val="1">1</option>
+
+          <option val="2">2</option>
+
+          <option val="3">3</option>
+
+          <option val="4">4</option>
+
+          <option val="5">5</option>
+
+      </select>
+      m
+      :
+      <select id="intTenSec">
+
+          <option val="0">0</option>
+
+          <option val="1">1</option>
+
+          <option val="2">2</option>
+
+          <option val="3">3</option>
+
+          <option val="4">4</option>
+
+          <option val="5">5</option>
+
+      </select>
+      <select id="intSec">
+          <option val="0">0</option>
+          <option val="5">5</option>
+      </select>
+      <span>s</span>
+    </div>
+  </div>
+  <div class="row border" id="exEditDesc" style="display: none;">
+    <input type="form-control input-lg" id="FullDesc">
+  </div>
+<br>
+
+  <button id="addEx2Workout">ADD</button>
+  <button id="cancelEx2Workout">CANCEL</button>
+
+</div>
+<br>
+
+
+<!--Workout Exercises Container -->
+<div class=".mx-auto" id="allExCont">
+</div>
+
+
+<script type="text/javascript" src="/static/create.js"></script>
+
+</div>
+
+
+
+
+        </main>
+
+        <footer class="small text-center text-muted">
+           I made this footer.
+        </footer>
+
+
+
+</body>
+  border-style: dotted;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+/*taken from https://stackoverflow.com/questions/26973570/setting-a-max-character-length-in-css */
